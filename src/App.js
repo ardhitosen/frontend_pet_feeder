@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Container, Typography, Button, Grid, Card, CardContent } from '@mui/material';
 
-function App() {
+const PetFeederPage = () => {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Container maxWidth="md">
+      <Typography variant="h4" align="center" gutterBottom>
+        Automatic Pet Feeder
+      </Typography>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                Feeding Schedule
+              </Typography>
 
-export default App;
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                Food Status
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+      <Button variant="contained" color="primary" fullWidth>
+        Feed My Pet
+      </Button>
+    </Container>
+  );
+};
+
+export default PetFeederPage;
