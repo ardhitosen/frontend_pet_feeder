@@ -1,58 +1,66 @@
-import React from 'react';
-import { Container, Typography, Button, Grid, Card, Box , IconButton, CardContent, AppBar, Toolbar } from '@mui/material';
+import React, {useState} from 'react';
+import { Avatar, Container, BottomNavigation, BottomNavigationAction,Typography, Button, Grid, Card, Box , IconButton, CardContent, AppBar, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import "./App.css";
+import '@fontsource/roboto/500.css';
 
 const PetFeederPage = () => {
-
+  const [value, setValue] = useState(0);
+  const [pet] = useState({
+    id: 1,
+    name: "ANJING",
+    imageUrl: "dog.jpg", // Replace with the actual URL of your pet's image
+  });
+  // const [pets, setPets] = useState([
+  //   { id: 1, name: "Dog 1" },
+  //   { id: 2, name: "Dog 2" },
+  //   { id: 3, name: "Dog 3" },
+  // ]);
+  //const [currentPetIndex,setCurrentPetIndex] = useState(0);
+  // const nextPet = () => {
+  //   setCurrentPetIndex((prevIndex) => (prevIndex + 1) % pets.length);
+  // };
+  // const previousPet = () => {
+  //   setCurrentPetIndex((prevIndex) =>
+  //     prevIndex === 0 ? pets.length - 1 : prevIndex - 1
+  //   );
+  // };
 
   return (
-    <Container maxWidth="md">
-      <Box sx={{ flexGrow: 1, mb:2 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" component="div" /*sx={{ flexGrow: 1 }}*/>
-              Home
-            </Typography>
-            <Typography variant="h5" component="div" align='center' sx={{ flexGrow: 1 }}>
-              Automatic Pet Feeder
-            </Typography>
-            <Button color="inherit">Login</Button>
-            </Toolbar>
-        </AppBar>
-      </Box>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Feeding Schedule
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Food Status
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
-      <Button variant="contained" color="primary" fullWidth sx={{ flexGrow: 1, mt:2 }}>
-        Feed My Pet
-      </Button>
-    </Container>
+    <div className="container">
+     <div className="pet-list">
+        <Typography variant="h5" gutterBottom>
+          Pet Profile
+        </Typography>
+        <Avatar alt={pet.name} src={pet.imageUrl} sx={{ width: 150, height: 150 }} />
+        <Typography variant="h6" gutterBottom>
+          {pet.name}
+        </Typography>
+        
+        {/* <IconButton onClick={previousPet}>
+          <ArrowBackIosIcon />
+        </IconButton>
+        <IconButton onClick={nextPet}>
+          <ArrowForwardIosIcon />
+        </IconButton> */}
+      </div>
+      <BottomNavigation
+    className="bottom-navigation"
+    showLabels
+    value={value}
+    onChange={(event, newValue) => {
+      setValue(newValue);
+    }}
+    fullWidth maxWidth={false}
+    >
+      <BottomNavigationAction label="Pets" />
+      <BottomNavigationAction label="Feed"/>
+      <BottomNavigationAction label="Profile"/> 
+    </BottomNavigation>
+
+    </div>
   );
 };
 
