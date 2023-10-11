@@ -16,6 +16,7 @@
   
   .bottom-navigation {
     margin-top: auto; /* Push the BottomNavigation to the bottom */
+    width:100%;
   }
 
   .feeder{

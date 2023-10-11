@@ -6,8 +6,10 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import "./Feed.css";
 import '@fontsource/roboto/500.css';
 import NavBawah from './NavBawah';
+import { useNavigate } from 'react-router-dom';
 
 const FeedPage = () => {
+  const navigate = useNavigate();
   const [value, setValue] = useState(1);
   const [pet] = useState({
     id: 1,
@@ -16,6 +18,22 @@ const FeedPage = () => {
     FeedingSchedules: ["08.00 AM","15.00 PM"],
     imageUrl: "dog.jpg", // Replace with the actual URL of your pet's image
   });
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    switch (newValue) {
+      case 0:
+        navigate('/');
+        break;
+      case 1:
+        navigate('/feed');
+        break;
+      case 2:
+        navigate('/profile');
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="container">
@@ -41,9 +59,7 @@ const FeedPage = () => {
             <Button variant="contained">Edit Portion</Button>
         </Grid>
         </Grid>
-      <NavBawah value={value} onChange={(event, newValue) => setValue(newValue)} />
-      
-
+      <NavBawah value={value} onChange={handleChange} />
     </div>
   );
 };

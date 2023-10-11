@@ -7,15 +7,34 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import "./Pet.css";
+import { useNavigate } from 'react-router-dom';
 import '@fontsource/roboto/500.css';
+import NavBawah from './NavBawah';
 
 const PetFeederPage = () => {
   const [value, setValue] = useState(0);
+  const navigate = useNavigate();
   const [pet] = useState({
     id: 1,
     name: "ANJING",
     imageUrl: "dog.jpg", // Replace with the actual URL of your pet's image
   });
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    switch (newValue) {
+      case 0:
+        navigate('/');
+        break;
+      case 1:
+        navigate('/feed');
+        break;
+      case 2:
+        navigate('/profile');
+        break;
+      default:
+        break;
+    }
+  };
   // const [pets, setPets] = useState([
   //   { id: 1, name: "Dog 1" },
   //   { id: 2, name: "Dog 2" },
@@ -102,19 +121,7 @@ const PetFeederPage = () => {
         </AccordionDetails>
         </Accordion>
       </div>
-      <BottomNavigation
-    className="bottom-navigation"
-    showLabels
-    value={value}
-    onChange={(event, newValue) => {
-      setValue(newValue);
-    }}
-    fullWidth maxWidth={false}
-    >
-      <BottomNavigationAction label="Pets" />
-      <BottomNavigationAction label="Feed"/>
-      <BottomNavigationAction label="Profile"/> 
-    </BottomNavigation>
+      <NavBawah value={value} onChange={handleChange} />
 
     </div>
   );
