@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import { Avatar, Container, BottomNavigation, BottomNavigationAction,Typography, Button, Grid, Card, Box , IconButton, CardContent, AppBar, Toolbar } from '@mui/material';
+import { Accordion,AccordionSummary,AccordionDetails } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MenuIcon from '@mui/icons-material/Menu';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -30,7 +32,7 @@ const PetFeederPage = () => {
 
   return (
     <div className="container">
-     <div className="pet-list">
+      <div className="pet-list">
         <Typography variant="h5" gutterBottom>
           Pet Profile
         </Typography>
@@ -45,6 +47,19 @@ const PetFeederPage = () => {
         <IconButton onClick={nextPet}>
           <ArrowForwardIosIcon />
         </IconButton> */}
+      </div>
+      <div className="pet-info">
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography>Details</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+        </Accordion>
       </div>
       <BottomNavigation
     className="bottom-navigation"
