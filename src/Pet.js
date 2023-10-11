@@ -95,30 +95,30 @@ const PetFeederPage = () => {
             <Typography>Biodata</Typography>
           </AccordionSummary>
           <AccordionDetails>
-          <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 200 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Category</TableCell>
-            <TableCell align="right">Value</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.Category}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.Category}
-              </TableCell>
-              <TableCell align="right">{row.Value}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-        </AccordionDetails>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 200 }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Category</TableCell>
+                    <TableCell align="right">Value</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row) => (
+                    <TableRow
+                      key={row.Category}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {row.Category}
+                      </TableCell>
+                      <TableCell align="right">{row.Value}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </AccordionDetails>
         </Accordion>
       </div>
       <NavBawah value={value} onChange={handleChange} />
