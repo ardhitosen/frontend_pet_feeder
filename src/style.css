@@ -1,0 +1,27 @@
+/* style.css */
+
+.iphone {
+    background-color: #f0f0f0;
+    height: 844px;
+    width: 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo-no-background {
+    height: 172px;
+    width: 276px;
+    margin-top: 10px; /* Adjust the margin to position the logo as desired */
+    margin-bottom: 60px;
+  }
+  
+  .MUI-button-instance {
+    background-color: color="#6BB07D";
+  }
+  
+  .MUI-button-2 {
+    margin-top: 50px; /* Adjust the margin to position the button as desired */
+  }
+  
