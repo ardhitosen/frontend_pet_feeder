@@ -93,7 +93,7 @@ const PetFeederPage = () => {
               <TableCell component="th" scope="row">
                 {row.Category}
               </TableCell>
-              <TableCell align="right">{row.value}</TableCell>
+              <TableCell align="right">{row.Value}</TableCell>
             </TableRow>
           ))}
         </TableBody>
