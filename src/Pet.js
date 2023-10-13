@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Avatar, Container, BottomNavigation, BottomNavigationAction,Typography, Button, Grid, Card, Box , IconButton, CardContent, AppBar, Toolbar } from '@mui/material';
+import { Avatar, Container, BottomNavigation, BottomNavigationAction,Typography, Button, Grid, Card, Box , IconButton, CardContent, AppBar, Toolbar, Stack } from '@mui/material';
 import { Accordion,AccordionSummary,AccordionDetails } from '@mui/material';
 import { Table ,TableBody ,TableContainer ,Paper ,TableCell ,TableHead ,TableRow ,  } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -10,6 +10,9 @@ import "./Pet.css";
 import { useNavigate } from 'react-router-dom';
 import '@fontsource/roboto/500.css';
 import NavBawah from './NavBawah';
+import { alignProperty } from '@mui/material/styles/cssUtils';
+import { AlignHorizontalCenter, AlignHorizontalLeft } from '@mui/icons-material';
+import { FormHelperText, FormControl, Input, InputLabel, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
 
 const PetFeederPage = () => {
   const [value, setValue] = useState(0);
@@ -34,6 +37,16 @@ const PetFeederPage = () => {
       default:
         break;
     }
+  };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
   // const [pets, setPets] = useState([
   //   { id: 1, name: "Dog 1" },
@@ -118,9 +131,53 @@ const PetFeederPage = () => {
                 </TableBody>
               </Table>
             </TableContainer>
+            <div className='center-wrapper'>
+              <Button variant="contained" >Edit</Button>
+            </div>
           </AccordionDetails>
         </Accordion>
       </div>
+      <div id='footer'>
+        <Stack
+          direction="column"
+          justifyContent="flex-end"
+          alignItems="center"
+          spacing={2}
+        >
+          <Button variant="contained" onClick={handleClickOpen}>Add a Pet</Button>
+          <Button variant="contained" onClick={this.props.onDelete(this.props.id)}>Delete</Button>{/*wip*/}
+        </Stack>  
+      </div>
+
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Subscribe</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Please put in your pet Biodata:
+          </DialogContentText>
+          <FormControl>
+            <InputLabel htmlFor="my-name">Name</InputLabel>
+            <Input id="my-name" />
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="my-race">Race</InputLabel>
+            <Input id="my-race" />
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="my-age">Age</InputLabel>
+            <Input id="my-age" />
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="my-weight">Weight</InputLabel>
+            <Input id="my-weight" />
+          </FormControl>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Submit</Button>
+        </DialogActions>
+      </Dialog>
       <NavBawah value={value} onChange={handleChange} />
 
     </div>
