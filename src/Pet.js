@@ -137,7 +137,7 @@ const PetFeederPage = () => {
           </AccordionDetails>
         </Accordion>
       </div>
-      <div id='footer'>
+      <div className='center-wrapper'>
         <Stack
           direction="column"
           justifyContent="flex-end"
@@ -145,7 +145,7 @@ const PetFeederPage = () => {
           spacing={2}
         >
           <Button variant="contained" onClick={handleClickOpen}>Add a Pet</Button>
-          <Button variant="contained" onClick={this.props.onDelete(this.props.id)}>Delete</Button>{/*wip*/}
+          <Button variant="contained" /*onClick={this.props.onDelete(this.props.id)}*/ >Delete</Button>
         </Stack>  
       </div>
 
