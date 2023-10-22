@@ -19,6 +19,10 @@ const PetFeederPage = () => {
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
   const [pet, setPet] = useState([]);
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
   const handleChange = (event, newValue) => {
     setValue(newValue);
     switch (newValue) {
@@ -56,13 +60,6 @@ const PetFeederPage = () => {
         <Typography variant="h6" gutterBottom>
           {pet.name}
         </Typography>
-        
-        {/* <IconButton onClick={previousPet}>
-          <ArrowBackIosIcon />
-        </IconButton>
-        <IconButton onClick={nextPet}>
-          <ArrowForwardIosIcon />
-        </IconButton> */}
       </div>
       <div className="pet-info">
         <Accordion>
@@ -117,9 +114,9 @@ const PetFeederPage = () => {
           alignItems="center"
           spacing={2}
         >
-          <Button variant="contained" onClick={handleClickOpen}>Add a Pet</Button>
+          {/* <Button variant="contained" onClick={handleClickOpen}>Add a Pet</Button> */}
           <Button variant="contained" /*onClick={this.props.onDelete(this.props.id)}*/ >Delete</Button>
-        </Stack>  
+        </Stack> 
       </div>
 
 
