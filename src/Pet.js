@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Avatar, Container, BottomNavigation, BottomNavigationAction,Typography, Button, Grid, Card, Box , IconButton, CardContent, AppBar, Toolbar, Stack } from '@mui/material';
 import { Accordion,AccordionSummary,AccordionDetails } from '@mui/material';
 import { Table ,TableBody ,TableContainer ,Paper ,TableCell ,TableHead ,TableRow ,  } from '@mui/material';
@@ -7,6 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import "./Pet.css";
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '@fontsource/roboto/500.css';
 import NavBawah from './NavBawah';
@@ -20,6 +21,22 @@ const PetFeederPage = () => {
   const navigate = useNavigate();
   const [pet, setPet] = useState([]);
   const [open, setOpen] = useState(false);
+
+  useEffect(()=> {
+    console.log(deviceID);
+    const GetPets = async() => {
+        try{
+            console.log("TES");
+          const response = await axios.get(`http://localhost:8000/pets/${deviceID}`);
+          setPet(response.data);
+          console.log(pet);
+        } catch(error){
+          console.error('No Devices', Error);
+        }
+      };
+      GetPets();
+    },[]);
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -44,10 +61,10 @@ const PetFeederPage = () => {
   }
   
   const rows = [
-    createData('Name', "dog"),
-    createData('Race', "dog"),
-    createData('Age', 262),
-    createData('Weight', 305),
+    createData('Name', pet.nama),
+    createData('Race', pet.ras_hewan),
+    createData('Age', pet.umur),
+    createData('Weight', pet.berat),
   ];
   
   return (
