@@ -12,18 +12,15 @@ import '@fontsource/roboto/500.css';
 import NavBawah from './NavBawah';
 
 const PetFeederPage = () => {
+  const deviceID= localStorage.getItem('deviceID');
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
-  const [pet] = useState({
-    id: 1,
-    name: "ANJING",
-    imageUrl: "dog.jpg", // Replace with the actual URL of your pet's image
-  });
+  const [pet, setPet] = useState([]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
     switch (newValue) {
       case 0:
-        navigate('/');
+        navigate('/Pet');
         break;
       case 1:
         navigate('/feed');
@@ -35,20 +32,6 @@ const PetFeederPage = () => {
         break;
     }
   };
-  // const [pets, setPets] = useState([
-  //   { id: 1, name: "Dog 1" },
-  //   { id: 2, name: "Dog 2" },
-  //   { id: 3, name: "Dog 3" },
-  // ]);
-  //const [currentPetIndex,setCurrentPetIndex] = useState(0);
-  // const nextPet = () => {
-  //   setCurrentPetIndex((prevIndex) => (prevIndex + 1) % pets.length);
-  // };
-  // const previousPet = () => {
-  //   setCurrentPetIndex((prevIndex) =>
-  //     prevIndex === 0 ? pets.length - 1 : prevIndex - 1
-  //   );
-  // };
   function createData(Category, Value) {
     return { Category, Value};
   }

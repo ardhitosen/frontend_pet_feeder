@@ -16,8 +16,8 @@ const LoginPage = () => {
         nama,
         password,
       });
-
-      navigate('/');
+      localStorage.setItem('userData', JSON.stringify(response.data));
+      navigate('/Devices');
     } catch(error){
       console.error('Login failed',error);
     }

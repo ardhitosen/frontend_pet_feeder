@@ -22,7 +22,7 @@ const FeedPage = () => {
     setValue(newValue);
     switch (newValue) {
       case 0:
-        navigate('/');
+        navigate('/Pet');
         break;
       case 1:
         navigate('/feed');
