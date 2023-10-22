@@ -8,7 +8,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import "./Pet.css";
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import '@fontsource/roboto/500.css';
 import NavBawah from './NavBawah';
 import { alignProperty } from '@mui/material/styles/cssUtils';
@@ -22,24 +22,30 @@ const PetFeederPage = () => {
   const [pet, setPet] = useState([]);
   const [open, setOpen] = useState(false);
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   useEffect(()=> {
     console.log(deviceID);
     const GetPets = async() => {
         try{
-            console.log("TES");
+          console.log("TES");
           const response = await axios.get(`http://localhost:8000/pets/${deviceID}`);
           setPet(response.data);
           console.log(pet);
         } catch(error){
           console.error('No Devices', Error);
+          navigate('/addPet');
         }
       };
       GetPets();
     },[]);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
   const handleChange = (event, newValue) => {
     setValue(newValue);
     switch (newValue) {
@@ -119,7 +125,7 @@ const PetFeederPage = () => {
               </Table>
             </TableContainer>
             <div className='center-wrapper'>
-              <Button variant="contained" >Edit</Button>
+              <Button variant="contained" onClick={handleClickOpen}>Edit</Button>
             </div>
           </AccordionDetails>
         </Accordion>
@@ -138,7 +144,7 @@ const PetFeederPage = () => {
 
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>EDIT</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Please put in your pet Biodata:
