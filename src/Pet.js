@@ -21,6 +21,7 @@ const PetFeederPage = () => {
   const navigate = useNavigate();
   const [pet, setPet] = useState([]);
   const [open, setOpen] = useState(false);
+  const [editedPet, setEditedPet] = useState({});
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -29,13 +30,14 @@ const PetFeederPage = () => {
   const handleClose = () => {
     setOpen(false);
   };
+  
 
   useEffect(()=> {
     console.log(deviceID);
     const GetPets = async() => {
         try{
           console.log("TES");
-          const response = await axios.get(`http://localhost:8000/pets/${deviceID}`);
+          const response = await axios.get(`http://localhost:8000/pet/${deviceID}`);
           setPet(response.data);
           console.log(pet);
         } catch(error){
@@ -45,6 +47,27 @@ const PetFeederPage = () => {
       };
       GetPets();
     },[]);
+
+    const handleSubmit = async () => {
+      const updatedPetData = {
+        nama: document.getElementById('my-name').value,
+        ras_hewan: document.getElementById('my-race').value,
+        porsi_makan: 0,
+        umur: parseInt(document.getElementById('my-age').value, 10),
+        berat: parseInt(document.getElementById('my-weight').value,10),
+        tipe_hewan: document.getElementById('my-tipe').value,
+      };
+    
+      try {
+        const response = await axios.post(`http://localhost:8000/pet/edit/${pet.pet_id}`, updatedPetData);
+        console.log('Pet updated successfully');
+        setEditedPet(response.data);
+      } catch (error) {
+        console.error('Error', error);
+      }
+    
+      handleClose();
+    };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -67,10 +90,10 @@ const PetFeederPage = () => {
   }
   
   const rows = [
-    createData('Name', pet.nama),
-    createData('Race', pet.ras_hewan),
-    createData('Age', pet.umur),
-    createData('Weight', pet.berat),
+    createData('Name', editedPet.nama || pet.nama),
+    createData('Race', editedPet.ras_hewan || pet.ras_hewan),
+    createData('Age', editedPet.umur || pet.umur),
+    createData('Weight', editedPet.berat || pet.berat),
   ];
   
   return (
@@ -165,10 +188,14 @@ const PetFeederPage = () => {
             <InputLabel htmlFor="my-weight">Weight</InputLabel>
             <Input id="my-weight" />
           </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="my-tipe">Type</InputLabel>
+            <Input id="my-tipe" />
+          </FormControl>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Submit</Button>
+          <Button onClick={handleSubmit}>Submit</Button>
         </DialogActions>
       </Dialog>
       <NavBawah value={value} onChange={handleChange} />

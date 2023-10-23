@@ -24,7 +24,7 @@ const Devices = () => {
     const GetDevices = async() => {
         try{
             console.log("TES");
-          const response = await axios.post(`http://localhost:8000/devices/${user_id}`);
+          const response = await axios.get(`http://localhost:8000/device/${user_id}`);
     
           setDevices(response.data);
           console.log(devices);
