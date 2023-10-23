@@ -13,7 +13,7 @@ import '@fontsource/roboto/500.css';
 import NavBawah from './NavBawah';
 import { alignProperty } from '@mui/material/styles/cssUtils';
 import { AlignHorizontalCenter, AlignHorizontalLeft } from '@mui/icons-material';
-import { FormHelperText, FormControl, Input, InputLabel, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
+import { FormGroup, FormControl, Input, InputLabel, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
 
 const PetFeederPage = () => {
   const deviceID= localStorage.getItem('deviceID');
@@ -172,26 +172,28 @@ const PetFeederPage = () => {
           <DialogContentText>
             Please put in your pet Biodata:
           </DialogContentText>
-          <FormControl>
-            <InputLabel htmlFor="my-name">Name</InputLabel>
-            <Input id="my-name" />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-race">Race</InputLabel>
-            <Input id="my-race" />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-age">Age</InputLabel>
-            <Input id="my-age" />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-weight">Weight</InputLabel>
-            <Input id="my-weight" />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-tipe">Type</InputLabel>
-            <Input id="my-tipe" />
-          </FormControl>
+          <FormGroup>
+            <FormControl>
+              <InputLabel htmlFor="my-name">Name</InputLabel>
+              <Input id="my-name" />
+            </FormControl>
+            <FormControl>
+              <InputLabel htmlFor="my-race">Race</InputLabel>
+              <Input id="my-race" />
+            </FormControl>
+            <FormControl>
+              <InputLabel htmlFor="my-age">Age</InputLabel>
+              <Input id="my-age" />
+            </FormControl>
+            <FormControl>
+              <InputLabel htmlFor="my-weight">Weight</InputLabel>
+              <Input id="my-weight" />
+            </FormControl>
+            <FormControl>
+              <InputLabel htmlFor="my-tipe">Type</InputLabel>
+              <Input id="my-tipe" />
+            </FormControl>
+          </FormGroup>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

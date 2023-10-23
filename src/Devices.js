@@ -23,9 +23,8 @@ const Devices = () => {
     console.log(user_id);
     const GetDevices = async() => {
         try{
-            console.log("TES");
+          console.log("TES");
           const response = await axios.get(`http://localhost:8000/device/${user_id}`);
-    
           setDevices(response.data);
           console.log(devices);
         } catch(error){
