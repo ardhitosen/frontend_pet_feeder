@@ -39,6 +39,7 @@ const PetFeederPage = () => {
           console.log("TES");
           const response = await axios.get(`http://localhost:8000/pet/${deviceID}`);
           setPet(response.data);
+          localStorage.setItem('petData', JSON.stringify(response.data));
           console.log(pet);
         } catch(error){
           console.error('No Devices', Error);
