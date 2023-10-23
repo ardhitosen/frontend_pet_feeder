@@ -56,10 +56,11 @@ const PetFeederPage = () => {
         umur: parseInt(document.getElementById('my-age').value, 10),
         berat: parseInt(document.getElementById('my-weight').value,10),
         tipe_hewan: document.getElementById('my-tipe').value,
+        device_id: deviceID,
       };
     
       try {
-        const response = await axios.post(`http://localhost:8000/pet/edit/${pet.pet_id}`, updatedPetData);
+        const response = await axios.put(`http://localhost:8000/pet/edit/${pet.pet_id}`, updatedPetData);
         console.log('Pet updated successfully');
         setEditedPet(response.data);
       } catch (error) {

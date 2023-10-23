@@ -6,80 +6,61 @@ import { redirect, useNavigate } from 'react-router-dom';
 const AddPet = () => {
     const navigate = useNavigate();
     const deviceID= 1 //|| localStorage.getItem('deviceID');
-    const [formData, setFormData] = useState({
-        nama: '',
-        berat: 0,
-        tipe_hewan: '',
-        ras_hewan: '',
-        umur: 0,
-      });
-    
-    const insertPet = async (formData) => {
-        const response = await axios.post(`http://localhost:8000/pet/${deviceID}`, formData);
-        if (response.status === 201) {
+    const handleSubmit = async () => {
+        const formData = {
+            nama: document.getElementById('my-name').value,
+            ras_hewan: document.getElementById('my-race').value,
+            porsi_makan: 0,
+            umur: parseInt(document.getElementById('my-age').value, 10),
+            berat: parseInt(document.getElementById('my-weight').value,10),
+            tipe_hewan: document.getElementById('my-tipe').value,
+        };
+        
+        try {
+            await axios.post(`http://localhost:8000/pet/${deviceID}`, formData);
+            console.log('Pet added successfully');
             navigate('/Pet');
-        } else {
+        } catch (error) {
+            console.error('Error', error);
             navigate('/addPet');
         }
-    };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        await insertPet(formData);
     };
     
     return (
         <div className="container">
-            <form onSubmit={handleSubmit}>
-                <FormGroup>
-                <FormControl>
-                    <InputLabel htmlFor="my-name">Name</InputLabel>
-                    <Input
-                    id="my-name"
-                    name="name"
-                    value={formData.name}
-                    onChange={(event) => setFormData({ ...formData, name: event.target.value })}
-                    />
-                </FormControl>
-                <FormControl>
-                    <InputLabel htmlFor="my-race">Type</InputLabel>
-                    <Input
-                    id="my-race"
-                    name="race"
-                    value={formData.race}
-                    onChange={(event) => setFormData({ ...formData, tipe_hewan: event.target.value })}
-                    />
-                </FormControl>
-                <FormControl>
-                    <InputLabel htmlFor="my-race">Race</InputLabel>
-                    <Input
-                    id="my-race"
-                    name="race"
-                    value={formData.race}
-                    onChange={(event) => setFormData({ ...formData, ras_hewan: event.target.value })}
-                    />
-                </FormControl>
-                <FormControl>
-                    <InputLabel htmlFor="my-age">Age</InputLabel>
-                    <Input
-                    id="my-age"
-                    name="age"
-                    value={formData.age}
-                    onChange={(event) => setFormData({ ...formData, umur: event.target.value })}
-                    />
-                </FormControl>
-                <FormControl>
-                    <InputLabel htmlFor="my-weight">Weight</InputLabel>
-                    <Input
-                    id="my-weight"
-                    name="weight"
-                    value={formData.weight}
-                    onChange={(event) => setFormData({ ...formData, berat: event.target.value })}
-                    />
-                </FormControl>
-                </FormGroup>
-                <Button type="submit">Submit</Button>
-            </form>
+            <FormGroup>
+            <FormControl>
+                <InputLabel htmlFor="my-name">Name</InputLabel>
+                <Input
+                id="my-name"
+                />
+            </FormControl>
+            <FormControl>
+                <InputLabel htmlFor="my-tipe">Type</InputLabel>
+                <Input
+                id="my-tipe"
+                />
+            </FormControl>
+            <FormControl>
+                <InputLabel htmlFor="my-race">Race</InputLabel>
+                <Input
+                id="my-race"
+                />
+            </FormControl>
+            <FormControl>
+                <InputLabel htmlFor="my-age">Age</InputLabel>
+                <Input
+                id="my-age"
+                />
+            </FormControl>
+            <FormControl>
+                <InputLabel htmlFor="my-weight">Weight</InputLabel>
+                <Input
+                id="my-weight"
+                />
+            </FormControl>
+            </FormGroup>
+            <Button onClick={handleSubmit}>Submit</Button>
         </div>
     );
 };
