@@ -5,7 +5,7 @@ import { redirect, useNavigate } from 'react-router-dom';
 
 const AddPet = () => {
     const navigate = useNavigate();
-    const deviceID= 1 //|| localStorage.getItem('deviceID');
+    localStorage.getItem('deviceID');
     const handleSubmit = async () => {
         const formData = {
             nama: document.getElementById('my-name').value,
