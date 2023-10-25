@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Link, Routes } from 'react-router-dom';
 import Feed from './Feed';
 import Pet from './Pet';
 import LoginPage from './Login';
+import Register from './Register';
 import Devices from './Devices';
 import AddPet from './AddPet';
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="feed" element={<Feed />} />
         <Route path="login" element={<LoginPage/>}/>
         <Route path="/addpet" element={<AddPet/>}/>
+        <Route path="register" element={<Register/>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -5,31 +5,36 @@ import "./style.css";
 import { useNavigate } from 'react-router-dom';
 import logo from "./images/logo-no-background.png";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const [nama, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
   const navigate = useNavigate();
 
-  function navigateRegister()
-  {
-    navigate("/register");
-  }
-
-  const HandleLogin = async() => {
+  const HandleRegister = async() => {
     try{
-      const response = await axios.post('http://localhost:8000/login',{
+      const response = await axios.post('http://localhost:8000/user/',{
+        fullName,
         nama,
         password,
       });
-      localStorage.setItem('userData', JSON.stringify(response.data));
-      navigate('/Devices');
+      navigate('/');
     } catch(error){
-      console.error('Login failed',error);
+      console.error('Register failed',error);
     }
   };
   return (
     <div className="iphone">
       <img className="logo-no-background" alt="Logo no background" src={logo} />
+      
+      <TextField
+        label="Name"
+        variant="outlined"
+        type="FullName"
+        value={fullName}
+        onChange={(e) => setFullName(e.target.value)}
+      />
+      <br/>
       <TextField
         label="Username"
         variant="outlined"
@@ -45,15 +50,12 @@ const LoginPage = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <br />
-      <Button onClick={HandleLogin} variant="contained" color="success" className="MUI-button-instance">
-        Login
-      </Button>
-      <br/>
-      <Button onClick={navigateRegister} variant="contained" color="success" className="MUI-button-2">
+      <Button onClick={HandleRegister} variant="contained" color="success" className="MUI-button-instance">
         Register
       </Button>
+      <br/>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
