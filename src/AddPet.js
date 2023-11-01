@@ -1,11 +1,13 @@
 import React, {useState,useEffect} from 'react';
-import { FormGroup, FormControl, Input, InputLabel, Button, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
+import { Typography, FormGroup, FormControl, Input, InputLabel, Button, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
 import axios from 'axios';
 import { redirect, useNavigate } from 'react-router-dom';
+import "./addpet.css"
+import { Margin } from '@mui/icons-material';
 
 const AddPet = () => {
     const navigate = useNavigate();
-    localStorage.getItem('deviceID');
+    const deviceID = localStorage.getItem('deviceID');
     const handleSubmit = async () => {
         const formData = {
             nama: document.getElementById('my-name').value,
@@ -28,39 +30,44 @@ const AddPet = () => {
     
     return (
         <div className="container">
+            <div>
+                <Typography variant="h2" >
+                    Add Your Pet
+                </Typography>
+            </div>
             <FormGroup>
-            <FormControl>
-                <InputLabel htmlFor="my-name">Name</InputLabel>
-                <Input
-                id="my-name"
-                />
-            </FormControl>
-            <FormControl>
-                <InputLabel htmlFor="my-tipe">Type</InputLabel>
-                <Input
-                id="my-tipe"
-                />
-            </FormControl>
-            <FormControl>
-                <InputLabel htmlFor="my-race">Race</InputLabel>
-                <Input
-                id="my-race"
-                />
-            </FormControl>
-            <FormControl>
-                <InputLabel htmlFor="my-age">Age</InputLabel>
-                <Input
-                id="my-age"
-                />
-            </FormControl>
-            <FormControl>
-                <InputLabel htmlFor="my-weight">Weight</InputLabel>
-                <Input
-                id="my-weight"
-                />
-            </FormControl>
+                <FormControl sx={{mt : 2, mb: 2}}>
+                    <InputLabel htmlFor="my-name">Name</InputLabel>
+                    <Input
+                    id="my-name"
+                    />
+                </FormControl>
+                <FormControl sx={{mt : 2, mb: 2}}>
+                    <InputLabel htmlFor="my-tipe">Type</InputLabel>
+                    <Input
+                    id="my-tipe"
+                    />
+                </FormControl>
+                <FormControl sx={{mt : 2, mb: 2}}>
+                    <InputLabel htmlFor="my-race">Race</InputLabel>
+                    <Input
+                    id="my-race"
+                    />
+                </FormControl>
+                <FormControl sx={{mt : 2, mb: 2}}>
+                    <InputLabel htmlFor="my-age">Age</InputLabel>
+                    <Input
+                    id="my-age"
+                    />
+                </FormControl>
+                <FormControl sx={{mt : 2, mb: 2}}>
+                    <InputLabel htmlFor="my-weight">Weight</InputLabel>
+                    <Input
+                    id="my-weight"
+                    />
+                </FormControl>
             </FormGroup>
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button variant="contained" onClick={handleSubmit}>Submit</Button>
         </div>
     );
 };
