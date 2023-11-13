@@ -42,11 +42,16 @@ const Devices = () => {
 
       };
 
+      const handleAddDevice = () =>{
+        navigate('/')
+      };
+
     return (
         <div className="container">
         <Typography variant="h5" gutterBottom>
           Select your device
         </Typography>
+
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Grid container spacing={3}>
             {devices.map((device, index) => (
@@ -63,6 +68,10 @@ const Devices = () => {
             ))}
           </Grid>
         </div>
+
+        <button onClick={() => handleAddDevice()}variant="outlined">
+          + Add Device
+        </button>
       </div>
     );
 };

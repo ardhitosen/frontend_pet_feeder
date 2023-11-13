@@ -13,9 +13,9 @@ const RegisterPage = () => {
 
   const HandleRegister = async() => {
     try{
-      const response = await axios.post('http://localhost:8000/user/',{
-        fullName,
-        nama,
+      const response = await axios.post('http://localhost:8000/auth/',{
+        full_name: fullName,
+        name:nama,
         password,
       });
       navigate('/');
@@ -31,15 +31,15 @@ const RegisterPage = () => {
         label="Name"
         variant="outlined"
         type="FullName"
-        value={fullName}
-        onChange={(e) => setFullName(e.target.value)}
+        value={nama}
+        onChange={(e) => setUsername(e.target.value)}
       />
       <br/>
       <TextField
         label="Username"
         variant="outlined"
-        value={nama}
-        onChange={(e) => setUsername(e.target.value)}
+        value={fullName}
+        onChange={(e) => setFullName(e.target.value)}
       />
       <br />
       <TextField

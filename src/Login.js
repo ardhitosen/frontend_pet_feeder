@@ -15,23 +15,28 @@ const LoginPage = () => {
     navigate("/register");
   }
 
-  const HandleLogin = async() => {
-    try{
-      const response = await axios.post('http://localhost:8000/login',{
-        nama,
-        password,
-      });
+  const HandleLogin = async () => {
+    try {
+      const response = await axios.post(
+        'http://localhost:8000/auth/token',
+        `username=${nama}&password=${password}`,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
       localStorage.setItem('userData', JSON.stringify(response.data));
       navigate('/Devices');
-    } catch(error){
-      console.error('Login failed',error);
+    } catch (error) {
+      console.error('Login failed', error);
     }
   };
   return (
     <div className="iphone">
       <img className="logo-no-background" alt="Logo no background" src={logo} />
       <TextField
-        label="Username"
+        label="Name"
         variant="outlined"
         value={nama}
         onChange={(e) => setUsername(e.target.value)}
