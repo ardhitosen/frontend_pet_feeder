@@ -7,6 +7,7 @@ import LoginPage from './Login';
 import Register from './Register';
 import Devices from './Devices';
 import AddPet from './AddPet';
+import AddDevice from './AddDevice'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="login" element={<LoginPage/>}/>
         <Route path="/addpet" element={<AddPet/>}/>
         <Route path="register" element={<Register/>}/>
+        <Route path="/adddevice" element={<AddDevice/>}/>
       </Routes>
     </BrowserRouter>
   );

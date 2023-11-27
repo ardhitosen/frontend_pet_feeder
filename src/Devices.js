@@ -14,7 +14,9 @@ import '@fontsource/roboto/500.css';
 const Devices = () => {
 
     const user= JSON.parse(localStorage.getItem('userData'));
-    const user_id = user.user_id;   
+    const user_id = user.user_id;
+    const token = user.access_token
+
     const [devices, setDevices] = useState([]);
     const navigate = useNavigate();
     const [selectedDevice, setSelectedDevice] = useState(null);
@@ -24,7 +26,11 @@ const Devices = () => {
     const GetDevices = async() => {
         try{
           console.log("TES");
-          const response = await axios.get(`http://localhost:8000/device/${user_id}`);
+          const response = await axios.get(`http://localhost:8000/device/${user_id}`,{
+            headers: {
+              Authorization: 'Bearer ${token}',
+            },
+          });
           setDevices(response.data);
           console.log(devices);
         } catch(error){
@@ -32,7 +38,7 @@ const Devices = () => {
         }
       };
       GetDevices();
-    },[]);
+    },[user_id, token]);
 
     const handleDeviceSelect = (device) => {
         setSelectedDevice(device);
@@ -43,7 +49,7 @@ const Devices = () => {
       };
 
       const handleAddDevice = () =>{
-        navigate('/')
+        navigate('/adddevice')
       };
 
     return (
