@@ -19,7 +19,7 @@ const AddPet = () => {
         };
         
         try {
-            await axios.post(`http://localhost:8000/pet/${deviceID}`, formData);
+            await axios.post(`${process.env.REACT_APP_BACKEND_ADDRESS}/pet/${deviceID}`, formData);
             console.log('Pet added successfully');
             navigate('/Pet');
         } catch (error) {

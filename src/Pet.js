@@ -37,7 +37,7 @@ const PetFeederPage = () => {
     const GetPets = async() => {
         try{
           console.log("TES");
-          const response = await axios.get(`http://localhost:8000/pet/${deviceID}`);
+          const response = await axios.get(`${process.env.REACT_APP_BACKEND_ADDRESS}/pet/${deviceID}`);
           setPet(response.data);
           localStorage.setItem('petData', JSON.stringify(response.data));
           console.log(pet);
@@ -61,7 +61,7 @@ const PetFeederPage = () => {
       };
     
       try {
-        const response = await axios.put(`http://localhost:8000/pet/edit/${pet.pet_id}`, updatedPetData);
+        const response = await axios.put(`${process.env.REACT_APP_BACKEND_ADDRESS}/pet/edit/${pet.pet_id}`, updatedPetData);
         console.log('Pet updated successfully');
         setEditedPet(response.data);
       } catch (error) {

@@ -13,7 +13,7 @@ const RegisterPage = () => {
 
   const HandleRegister = async() => {
     try{
-      const response = await axios.post('http://localhost:8000/auth/',{
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_ADDRESS}/auth/`,{
         full_name: fullName,
         name:nama,
         password,

@@ -49,7 +49,7 @@ const FeedPage = () => {
   
     try {
       console.log(updatedPetSchedule);  
-      const response = await axios.put(`http://localhost:8000/pet/edit/jam_makan/${petData.pet_id}`, updatedPetSchedule);
+      const response = await axios.put(`${process.env.REACT_APP_BACKEND_ADDRESS}/pet/edit/jam_makan/${petData.pet_id}`, updatedPetSchedule);
       setEditedSchedule(updatedPetSchedule);
       console.log('Updated successfully');
     } catch (error) {

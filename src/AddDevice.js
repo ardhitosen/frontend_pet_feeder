@@ -15,7 +15,7 @@ const AddDevice = () => {
       const user_id = user.user_id;
 
       // Make a POST request to add a new device
-      await axios.post('http://localhost:8000/device/{user_id}', {
+      await axios.post(`${process.env.REACT_APP_BACKEND_ADDRESS}/device/{user_id}`, {
         model,
         mac_address: macAddress,
         user_id,
