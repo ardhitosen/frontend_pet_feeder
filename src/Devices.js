@@ -13,13 +13,25 @@ import '@fontsource/roboto/500.css';
 
 const Devices = () => {
 
-    const user= JSON.parse(localStorage.getItem('userData'));
-    const user_id = user.user_id;
-    const token = user.access_token
-
+  const navigate = useNavigate();
+  let user_id = "";
+  let token = "";
+  
+  const user = JSON.parse(localStorage.getItem('userData'));
+  console.log('user:', user);
+  
+  if (!user || user.user_id === null) {
+    console.log('Redirecting to /');
+    navigate('/');
+  } else {
+    user_id = user.user_id;
+    token = user.access_token;
+  }
+  
     const [devices, setDevices] = useState([]);
-    const navigate = useNavigate();
+
     const [selectedDevice, setSelectedDevice] = useState(null);
+
 
     useEffect(()=> {
     console.log(user_id);

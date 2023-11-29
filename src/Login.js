@@ -17,6 +17,7 @@ const LoginPage = () => {
 
   const HandleLogin = async () => {
     try {
+      console.log(process.env.REACT_APP_BACKEND_ADDRESS)
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_ADDRESS}/auth/token`,
         `username=${nama}&password=${password}`,
