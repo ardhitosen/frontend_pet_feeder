@@ -20,13 +20,7 @@ const Devices = () => {
   const user = JSON.parse(localStorage.getItem('userData'));
   console.log('user:', user);
   
-  if (!user || user.user_id === null) {
-    console.log('Redirecting to /');
-    navigate('/');
-  } else {
-    user_id = user.user_id;
-    token = user.access_token;
-  }
+  
   
     const [devices, setDevices] = useState([]);
 
@@ -35,6 +29,15 @@ const Devices = () => {
 
     useEffect(()=> {
     console.log(user_id);
+    
+    if (!user || user.user_id === null) {
+      console.log('Redirecting to /');
+      navigate('/');
+    } else {
+      user_id = user.user_id;
+      token = user.access_token;
+    }
+    
     const GetDevices = async() => {
         try{
           console.log("TES");
