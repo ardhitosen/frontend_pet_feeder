@@ -16,7 +16,7 @@ import { AlignHorizontalCenter, AlignHorizontalLeft } from '@mui/icons-material'
 import { FormGroup, FormControl, Input, InputLabel, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
 
 const Profile = () => {
-  const userID= localStorage.getItem('user_id');
+  const userData= localStorage.getItem('userData');
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
@@ -31,23 +31,6 @@ const Profile = () => {
     setOpen(false);
   };
   
-
-  useEffect(()=> {
-    console.log(userID);
-    const GetPets = async() => {
-        try{
-          console.log("TES");
-          const response = await axios.get(`${process.env.REACT_APP_BACKEND_ADDRESS}/profile/${userID}`);
-          setUser(response.data);
-          localStorage.setItem('userData', JSON.stringify(response.data));
-          console.log(user);
-        } catch(error){
-          console.error('No Devices', Error);
-          navigate('/addPet');
-        }
-      };
-      GetPets();
-    },[]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -70,7 +53,7 @@ const Profile = () => {
   }
   
   const rows = [
-    createData('UserName', user.full_name),
+    createData('UserName', userData.full_name),
   ];
   
   return (
