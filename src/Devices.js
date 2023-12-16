@@ -74,7 +74,7 @@ const Devices = () => {
           Select your device
         </Typography>
 
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '5px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
           <Grid container spacing={3}>
             {devices.map((device, index) => (
               //<Grid item xs={12} sm={6} md={4} key={index}>
