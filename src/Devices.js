@@ -76,7 +76,8 @@ const Devices = () => {
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Grid container spacing={3}>
             {devices.map((device, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+              //<Grid item xs={12} sm={6} md={4} key={index}>
+              <Grid item key={index}>
                 <Card>
                   <CardContent>
                     <Typography variant="h6">{device.model}</Typography>
