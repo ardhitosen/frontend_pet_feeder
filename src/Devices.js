@@ -35,6 +35,7 @@ const Devices = () => {
       navigate('/');
     } else {
       user_id = user.user_id;
+      localStorage.setItem('user_id', user.user_id);
       token = user.access_token;
     }
     
@@ -73,7 +74,7 @@ const Devices = () => {
           Select your device
         </Typography>
 
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '5px' }}>
           <Grid container spacing={3}>
             {devices.map((device, index) => (
               //<Grid item xs={12} sm={6} md={4} key={index}>
@@ -91,9 +92,9 @@ const Devices = () => {
           </Grid>
         </div>
 
-        <button onClick={() => handleAddDevice()}variant="outlined">
+        <Button onClick={() => handleAddDevice()}variant="outlined">
           + Add Device
-        </button>
+        </Button>
       </div>
     );
 };
