@@ -40,7 +40,6 @@ const Profile = () => {
           console.log(userID);
           const response = await axios.get(`${process.env.REACT_APP_BACKEND_ADDRESS}/profile/${userID}`);
           setUser(response.data);
-          localStorage.setItem('userData', JSON.stringify(response.data));
           console.log(user);
         } catch(error){
           console.error('No Devices', Error);
