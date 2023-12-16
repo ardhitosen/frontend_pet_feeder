@@ -169,11 +169,14 @@ const FeedPage = () => {
     console.log(petData);
     const GetHis = async() => {
       try{
-        console.log("TES")
+        console.log("petdata")
         console.log(petData);
+        console.log("petid")
+        console.log(petData.pet_id);
         const response = await axios.get(`${process.env.REACT_APP_BACKEND_ADDRESS}/feed/${petData.pet_id}`);
         setHistory(response.data);
         console.log(history);
+        console.log("history");
       } catch(error){
         console.error('No History', Error);
       }
