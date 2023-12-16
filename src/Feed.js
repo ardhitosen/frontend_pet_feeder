@@ -266,31 +266,29 @@ const FeedPage = () => {
           <Button onClick={handleSubmitSchedule}>Submit</Button>
         </DialogActions>
       </Dialog>
-      <div>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 200 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="center">History</TableCell>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 200 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">History</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.Category}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.Category}
+                </TableCell>
+                <TableCell align="right">{row.Value}</TableCell>
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.Category}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.Category}
-                  </TableCell>
-                  <TableCell align="right">{row.Value}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <NavBawah value={value} onChange={handleChange} />
-      </div>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <NavBawah value={value} onChange={handleChange} />
     </div>
   );
 };
