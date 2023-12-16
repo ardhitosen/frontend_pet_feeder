@@ -17,7 +17,7 @@ import { FormGroup, FormControl, Input, InputLabel, Dialog, DialogActions, Dialo
 
 const Profile = () => {
   const userID= localStorage.getItem('user_id');
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(2);
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
   const [open, setOpen] = useState(false);

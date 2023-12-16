@@ -191,85 +191,81 @@ const FeedPage = () => {
   ];
   
   return (
-    <div> 
-      <div className="container">
-        <Grid className="feeder" container justifyContent="center">
-          <Grid item xs={12} sm={6}>
-            <Typography variant="h4" gutterBottom>
-              {pet.name}
-            </Typography>
-            <Typography variant="h5" gutterBottom>
-              Porsi
-            </Typography>
-            <Typography variant="h5" gutterBottom>
-              {pet.PorsiMakan} Grams
-            </Typography>
-            <Typography variant="h5" gutterBottom>
-            {schedules.map((schedule) => (
-              <div style={{padding:'10%'}} key={schedule.schedule_id}>
-                <TextField
-                  type="time"
-                  value={schedule.jam_makan}
-                  onChange={(e) =>
-                    handleEditSchedule(schedule.schedule_id, e.target.value)
-                  }
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  />
-                <Button
-                  variant="contained"
-                  onClick={() => handleSaveSchedule(schedule.schedule_id)}
-                  sx={{mt: 2}}
-                  >
-                  Save
-                </Button>
-              </div>
-            ))}
-            </Typography>
-            <Button variant="contained" onClick={handleClickOpen2}>
-              Edit Portion
-            </Button>
-          </Grid>
+    <div className="container">
+      <Grid className="feeder" container justifyContent="center">
+        <Grid item xs={12} sm={6}>
+          <Typography variant="h4" gutterBottom>
+            {pet.name}
+          </Typography>
+          <Typography variant="h5" gutterBottom>
+            Porsi
+          </Typography>
+          <Typography variant="h5" gutterBottom>
+            {pet.PorsiMakan} Grams
+          </Typography>
+          <Typography variant="h5" gutterBottom>
+          {schedules.map((schedule) => (
+            <div style={{padding:'10%'}} key={schedule.schedule_id}>
+              <TextField
+                type="time"
+                value={schedule.jam_makan}
+                onChange={(e) =>
+                  handleEditSchedule(schedule.schedule_id, e.target.value)
+                }
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                />
+              <Button
+                variant="contained"
+                onClick={() => handleSaveSchedule(schedule.schedule_id)}
+                sx={{mt: 2}}
+                >
+                Save
+              </Button>
+            </div>
+          ))}
+          </Typography>
+          <Button variant="contained" onClick={handleClickOpen2}>
+            Edit Portion
+          </Button>
         </Grid>
-        <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>EDIT</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Please put in your pet schedule:
-            </DialogContentText>
-            <FormGroup>
-              <FormControl>
-                <InputLabel htmlFor="my-schedule">Schedule</InputLabel>
-                <Input id="my-schedule" />
-              </FormControl>
-            </FormGroup>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleSubmitSchedule}>Submit</Button>
-          </DialogActions>
-        </Dialog>
+      </Grid>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>EDIT</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Please put in your pet schedule:
+          </DialogContentText>
+          <FormGroup>
+            <FormControl>
+              <InputLabel htmlFor="my-schedule">Schedule</InputLabel>
+              <Input id="my-schedule" />
+            </FormControl>
+          </FormGroup>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleSubmitSchedule}>Submit</Button>
+        </DialogActions>
+      </Dialog>
 
-        <Dialog open={open2} onClose={handleClose2}>
-          <DialogTitle>EDIT</DialogTitle>
-          <DialogContent>
-            <DialogContentText>Please put in your pet portion:</DialogContentText>
-            <FormGroup>
-              <FormControl>
-                <InputLabel htmlFor="my-schedule">Portion</InputLabel>
-                <Input id="my-schedule" />
-              </FormControl>
-            </FormGroup>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose2}>Cancel</Button>
-            <Button onClick={handleSubmitSchedule}>Submit</Button>
-          </DialogActions>
-        </Dialog>
-
-        
-      </div>
+      <Dialog open={open2} onClose={handleClose2}>
+        <DialogTitle>EDIT</DialogTitle>
+        <DialogContent>
+          <DialogContentText>Please put in your pet portion:</DialogContentText>
+          <FormGroup>
+            <FormControl>
+              <InputLabel htmlFor="my-schedule">Portion</InputLabel>
+              <Input id="my-schedule" />
+            </FormControl>
+          </FormGroup>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose2}>Cancel</Button>
+          <Button onClick={handleSubmitSchedule}>Submit</Button>
+        </DialogActions>
+      </Dialog>
       <div>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 200 }} aria-label="simple table">
