@@ -16,7 +16,7 @@ import { AlignHorizontalCenter, AlignHorizontalLeft } from '@mui/icons-material'
 import { FormGroup, FormControl, Input, InputLabel, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
 
 const Profile = () => {
-  const userID= localStorage.getItem('userData');
+  const userID= localStorage.getItem('user_id');
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
@@ -42,7 +42,7 @@ const Profile = () => {
           setUser(response.data);
           console.log(user);
         } catch(error){
-          console.error('No Devices', Error);
+          console.error('No user', Error);
           navigate('/addPet');
         }
       };
