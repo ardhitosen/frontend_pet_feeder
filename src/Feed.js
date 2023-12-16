@@ -182,6 +182,14 @@ const FeedPage = () => {
     GetFeedingTime();
   }, []);
 
+  function createData(Category, Value) {
+    return { Category, Value};
+  }
+  
+  const rows = [
+    createData(history.feeding_date , history.dimakan )
+  ];
+  
   return (
     <div> 
       <div className="container">
