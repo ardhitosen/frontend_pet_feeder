@@ -120,6 +120,7 @@ const Profile = () => {
           </AccordionDetails>
         </Accordion>
       </div>
+      <NavBawah value={value} onChange={handleChange} />
     </div>
   );
 };
