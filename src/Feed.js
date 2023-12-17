@@ -12,6 +12,7 @@ import { FormGroup, FormControl, Input, InputLabel, Dialog, DialogActions, Dialo
 
 const FeedPage = () => {
   const petData= JSON.parse(localStorage.getItem('petData'));
+  const user = JSON.parse(localStorage.getItem('userData'));
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -24,6 +25,8 @@ const FeedPage = () => {
     FeedingSchedules: petData.jam_makan,
     imageUrl: "dog.jpg", // Replace with the actual URL of your pet's image
   });
+
+  
 
 
   const handleClickOpen = () => {
@@ -76,10 +79,19 @@ const FeedPage = () => {
     }
   };
 
-  useEffect(()=> {
-    console.log("HELLO");
-    console.log(petData);
-    },[]);
+  let user_id;
+  let token;
+  const jam_makan = petData.jam_makan;
+  
+  useEffect(() => {
+    if (!user || user.user_id === null) {
+      console.log('Redirecting to /');
+      navigate('/');
+    } else {
+      user_id = user.user_id;
+      token = user.access_token;
+    }
+  },[user_id, token]);
 
   return (
     <div className="container">

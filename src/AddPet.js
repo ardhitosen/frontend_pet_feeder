@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import { Typography, FormGroup, FormControl, Input, InputLabel, Button, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
 import axios from 'axios';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "./addpet.css"
 import { Margin } from '@mui/icons-material';
 
@@ -27,6 +27,20 @@ const AddPet = () => {
             navigate('/addPet');
         }
     };
+
+    const user = JSON.parse(localStorage.getItem('userData'));
+    let user_id = "";
+    let token = "";
+
+    useEffect(() => {
+      if (!user || user.user_id === null) {
+        console.log('Redirecting to /');
+        navigate('/');
+      } else {
+        user_id = user.user_id;
+        token = user.access_token;
+      }
+    },[user_id, token]);
     
     return (
         <div className="container">

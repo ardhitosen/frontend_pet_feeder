@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, TextField, Container, Typography, Box } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +7,22 @@ const AddDevice = () => {
   const [model, setModel] = useState('');
   const [macAddress, setMacAddress] = useState('');
   const navigate = useNavigate();
+  let user_id = "";
+  let token = "";
 
+  const user = JSON.parse(localStorage.getItem('userData'));
+
+  useEffect(() => {
+    if (!user || user.user_id === null) {
+      console.log('Redirecting to /');
+      navigate('/');
+    } else {
+      user_id = user.user_id;
+      token = user.access_token;
+      console.log(user_id);
+    }
+  },[user_id, token]);
+  
   const handleAddDevice = async () => {
     try {
       // Assuming you have the user's ID stored in localStorage

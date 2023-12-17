@@ -36,7 +36,6 @@ const PetFeederPage = () => {
     console.log(deviceID);
     const GetPets = async() => {
         try{
-          console.log("TES");
           const response = await axios.get(`${process.env.REACT_APP_BACKEND_ADDRESS}/pet/${deviceID}`);
           setPet(response.data);
           localStorage.setItem('petData', JSON.stringify(response.data));
