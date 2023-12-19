@@ -28,16 +28,16 @@ const RegisterPage = () => {
       <img className="logo-no-background" alt="Logo no background" src={logo} />
       
       <TextField
-        label="Username"
+        label="Full Name"
         variant="outlined"
         value={fullName}
         onChange={(e) => setFullName(e.target.value)}
       />
       <br/>
       <TextField
-        label="Name"
+        label="Username"
         variant="outlined"
-        type="FullName"
+        type="Username"
         value={nama}
         onChange={(e) => setUsername(e.target.value)}
       />

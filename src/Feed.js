@@ -44,7 +44,7 @@ const FeedPage = () => {
   const [open, setOpen] = useState(false);
   const [schedules, setSchedules] = useState([]);
   const [open2, setOpen2] = useState(false);
-  const [history, setHistory] = useState([])
+  const [historyData, setHistoryData] = useState([])
   const [editedPetSchedule, setEditedSchedule] = useState(
     petData.jam_makan || ""
   );
@@ -186,10 +186,9 @@ const FeedPage = () => {
         console.log(petData);
         console.log("petid")
         console.log(petData.pet_id);
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_ADDRESS}/feed/${petData.pet_id}`);
-        setHistory(response.data);
-        console.log(history);
-        console.log("history");
+        const feeding_history = await axios.get(`${process.env.REACT_APP_BACKEND_ADDRESS}/feedhistory/${petData.pet_id}`);
+        console.log(feeding_history.data);
+        setHistoryData(feeding_history.data);
       } catch(error){
         console.error('No History', Error);
       }
@@ -201,11 +200,6 @@ const FeedPage = () => {
   function createData(Category, Value) {
     return { Category, Value};
   }
-  
-  const rows = [
-    createData(history.feeding_date , history.dimakan )
-  ];
-  
   return (
     <div className="container">
       <Grid className="feeder" container justifyContent="center">
@@ -242,9 +236,9 @@ const FeedPage = () => {
             </div>
           ))}
           </Typography>
-          <Button variant="contained" onClick={handleClickOpen2}>
+          {/* <Button variant="contained" onClick={handleClickOpen2}>
             Edit Portion
-          </Button>
+          </Button> */}
         </Grid>
       </Grid>
       <Dialog open={open} onClose={handleClose}>
@@ -287,18 +281,16 @@ const FeedPage = () => {
           <TableHead>
             <TableRow>
               <TableCell align="center">History</TableCell>
+              <TableCell align="center">Time</TableCell>
+              <TableCell align="center">Food Eaten (grams)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.Category}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.Category}
-                </TableCell>
-                <TableCell align="right">{row.Value}</TableCell>
+            {historyData.length > 0 && historyData[0].map((historyItem, index) => (
+              <TableRow key={index}>
+                <TableCell align="center">{historyItem.feeding_date}</TableCell>
+                <TableCell align="center">{historyItem.time}</TableCell>
+                <TableCell align="center">{historyItem.dimakan}</TableCell>
               </TableRow>
             ))}
           </TableBody>
