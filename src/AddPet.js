@@ -69,13 +69,13 @@ const AddPet = () => {
                     />
                 </FormControl>
                 <FormControl sx={{mt : 2, mb: 2}}>
-                    <InputLabel htmlFor="my-age">Age</InputLabel>
+                    <InputLabel htmlFor="my-age">Age (Months)</InputLabel>
                     <Input
                     id="my-age"
                     />
                 </FormControl>
                 <FormControl sx={{mt : 2, mb: 2}}>
-                    <InputLabel htmlFor="my-weight">Weight</InputLabel>
+                    <InputLabel htmlFor="my-weight">Weight (Grams)</InputLabel>
                     <Input
                     id="my-weight"
                     />
