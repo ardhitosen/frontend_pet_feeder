@@ -18,6 +18,7 @@ const Devices = () => {
   let token = "";
   
   const user = JSON.parse(localStorage.getItem('userData'));
+  token = user.access_token;
   console.log('user:', user);
   
   

@@ -40,10 +40,12 @@ import {
 
 const FeedPage = () => {
   const petData = JSON.parse(localStorage.getItem("petData"));
+  const user = JSON.parse(localStorage.getItem('userData'));
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [schedules, setSchedules] = useState([]);
   const [open2, setOpen2] = useState(false);
+  const token = user.access_token;
   const [historyData, setHistoryData] = useState([])
   const [editedPetSchedule, setEditedSchedule] = useState(
     petData.jam_makan || ""

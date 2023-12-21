@@ -28,6 +28,7 @@ const LoginPage = () => {
         }
       );
       localStorage.setItem('userData', JSON.stringify(response.data));
+      localStorage.setItem('accessToken', response.data.access_token);
       navigate('/Devices');
     } catch (error) {
       console.error('Login failed', error);
